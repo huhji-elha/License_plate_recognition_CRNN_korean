@@ -6,6 +6,15 @@ from Model import get_Model
 from parameter import letters
 import argparse
 from keras import backend as K
+
+#print hangul
+from PIL import ImageFont, ImageDraw, Image
+
+import imageio
+
+fontpath = "../fonts_path/NanumGothic.ttf"
+font = ImageFont.truetype(fontpath, 30)
+
 K.set_learning_phase(0)
 
 Region = {"A": "서울 ", "B": "경기 ", "C": "인천 ", "D": "강원 ", "E": "충남 ", "F": "대전 ",
@@ -46,9 +55,9 @@ def label_to_hangul(label):  # eng -> hangul
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--weight", help="weight file directory",
-                    type=str, default="Final_weight.hdf5")
+                    type=str, default="./checkpoint/2--LSTM+BN5--30--0.222.hdf5")
 parser.add_argument("-t", "--test_img", help="Test image directory",
-                    type=str, default="./DB/test/")
+                    type=str, default="./test_img/")
 args = parser.parse_args()
 
 # Get CRNN model
@@ -91,13 +100,19 @@ for test_img in test_imgs:
         acc += 1
     total += 1
     print('Predicted: %s  /  True: %s' % (label_to_hangul(pred_texts), label_to_hangul(test_img[0:-4])))
-    
-    # cv2.rectangle(img, (0,0), (150, 30), (0,0,0), -1)
-    # cv2.putText(img, pred_texts, (5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255),2)
 
-    #cv2.imshow("q", img)
+    img_pil = Image.open(test_dir + test_img)
+    draw = ImageDraw.Draw(img_pil)
+    draw.text((10,10),'Predicted : ' +  label_to_hangul(pred_texts), font=font, fill=None, outline=(255,255,255))
+    img_pil.save('./output_img/' + label_to_hangul(pred_texts) + '.png')
+
+    #cv2.putText(img, label_to_hangul(pred_texts), (5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255,255,255),2)
+
+    #imageio.imwrite('test.png', draw)
+    #draw=np.array(draw)
+    #cv2.imwrite("test.png", draw)
     #if cv2.waitKey(0) == 27:
-    #   break
+    #  break
     #cv2.destroyAllWindows()
 
 end = time.time()
