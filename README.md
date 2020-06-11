@@ -63,7 +63,7 @@
 간단하게 예측한 결과만 이미지에 표시되로록 함.
 한글 출력을 위해 Prediction.py에서 cv부분만 pillow 코드로 수정.
 
-![](output_img/충남 80오6828.png)
+![](output_img/충남_80오6828.png)
 
 ![](output_img/97로3866.png)
 
