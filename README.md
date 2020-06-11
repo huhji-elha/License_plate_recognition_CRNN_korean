@@ -17,7 +17,7 @@
 
 ---------------------------------------------------
 
-#### first turn
+### first turn
 
 테스트로 돌려본 후(~epoch 09까지) 데이터 늘려서 전이학습.
 
@@ -25,7 +25,7 @@
 | :----------: | :----------------: | :------: | :------: |
 50,000 | 5,000 | 09 | 11.773 |
 
-#### second turn
+### second turn
 
 | train data | validation data | stop epoch | best val loss |
 | :----------: | :----------------: | :------: | :------: |
@@ -33,7 +33,7 @@
 
 ![turn 1-2](graph/turn1-2.png)
 
-#### third turn
+### third turn
 
 | train data | validation data | stop epoch | best val loss |
 | :----------: | :----------------: | :------: | :------: |
@@ -47,11 +47,13 @@
 
 -----------------------------------------------------------
 
-#### performance
+### performance
 
 | Time | Accuracy | letter Accuracy |
 | :----: | :----: | :-----: |
 | 0.042 | 0.9 | 0.988 |
+
+
 
 **Ground Truth vs Predicted**
 
