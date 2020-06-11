@@ -9,7 +9,7 @@
 ### process
 1. 번호판 Generator 코드를 이용해 약 700,000장 생성
 2. 서버가 따라주는 한에서 최대한 훈련, 목표는 Accuracy 0.9
-3. Tensorflow Extended(TFW)로 파이프라인 구축 예정
+3. Tensorflow Extended(TFW)로 파이프라인 구축 + loss 0.1 이하 달성, 모델 경량화 예정
 4. 목표는 Tensorflow Lite로 배포해서 실시간성 앱에 탑재
 
 ![bash output](bash_output.png)
@@ -19,7 +19,7 @@
 
 ### first turn
 
-테스트로 돌려본 후(~epoch 09까지) 데이터 늘려서 전이학습.
+테스트로 돌려본 후(~epoch 09까지) 데이터 늘려서 best model로 이어서 학습.
 
 | train data | validation data | stop epoch | best val loss |
 | :----------: | :----------------: | :------: | :------: |
@@ -49,9 +49,9 @@
 
 ### performance
 
-| Time | Accuracy | letter Accuracy |
-| :----: | :----: | :-----: |
-| 0.042 | 0.9 | 0.988 |
+|test img | Time | Accuracy | letter Accuracy |
+|:----: | :----: | :----: | :-----: |
+| 10 | 0.042 | 0.9 | 0.988 |
 
 
 
